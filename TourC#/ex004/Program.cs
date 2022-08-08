@@ -1,9 +1,9 @@
 ﻿// Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
-Console.WriteLine("Введите число a: ");
+Console.Write("Введите число a: ");
 int a = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите число b: ");
+Console.Write("Введите число b: ");
 int b = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите число c: ");
+Console.Write("Введите число c: ");
 int c = Convert.ToInt32(Console.ReadLine());
 int max = a;
 if (b > max) max = b;

@@ -8,3 +8,4 @@ while(count <= N)
     Console.Write($"{count} ");
     count++;
 }
+ 

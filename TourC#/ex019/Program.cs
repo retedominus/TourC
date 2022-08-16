@@ -1,6 +1,6 @@
 ﻿// Напишите метод, который принимает на вход шестизначное число и проверяет, является ли оно палиндромом.
 
-int NumOfChar(int arg)
+int NumOfDig(int arg)
 {
     int div = 10;
     int count = 1;
@@ -64,7 +64,7 @@ void PrintArray(int[] array)
 Console.Write("Введите шестизначное число: ");
 int input = Convert.ToInt32(Console.ReadLine());
 int[] main = ConvertToArray(input);
-if (main.Length != NumOfChar(input)) System.Console.WriteLine("Введено число недопустимой длинны");
+if (main.Length != NumOfDig(input)) System.Console.WriteLine("Введено число недопустимой длинны");
 else
 {
     PrintArray(main);

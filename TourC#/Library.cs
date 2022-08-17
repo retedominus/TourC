@@ -149,4 +149,17 @@ public static class Library
 
         return array;
     }
+
+    //Метод возведения числа в степень (без pow)
+    public static double Degree(int arg1, int arg2)
+    {
+        double result = Convert.ToDouble(arg1);
+        for (int count = 1; count < arg2; count++)
+        {
+            result = result * arg1;
+        }
+        return result;
+    }
+
+
 }

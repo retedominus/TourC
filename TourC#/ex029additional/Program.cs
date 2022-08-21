@@ -19,10 +19,10 @@ void PrintArray2(int[] array)
     System.Console.WriteLine();
 }
 
-System.Console.WriteLine("Введите длинну массива: ");
-int N = Convert.ToInt32(Console.ReadLine());
-int[] array = FillArrayRandom(N);
-PrintArray2(array);
+// System.Console.WriteLine("Введите длинну массива: ");
+// int N = Convert.ToInt32(Console.ReadLine());
+// int[] array = FillArrayRandom(N);
+// PrintArray2(array);
 
 //#2 - Написать метод, принимающий бинарное представление числа и возвращающее десятиченое представление числа
 
@@ -70,10 +70,10 @@ int[] FromDecToAnother(int number, int arg)
     int index = 0;
     for (int i = 0; index == 0; i++)
     {
-       if(res[i] > 0) index = i;
+        if (res[i] > 0) index = i;
     }
     int newsize = res.Length - index;
-    for(int i = 0; index < res.Length; i++)
+    for (int i = 0; index < res.Length; i++)
     {
         res[i] = res[index];
         index++;
@@ -82,10 +82,14 @@ int[] FromDecToAnother(int number, int arg)
     return res;
 }
 
-// System.Console.WriteLine("Введите число: ");
-// int num = Convert.ToInt32(System.Console.ReadLine());
-// System.Console.WriteLine("Введите основание: ");
-// int arg = Convert.ToInt32(System.Console.ReadLine());
-// int[] res = FromDecToAnother(num, arg);
-// System.Console.Write($"{num}, {arg} -> ");
-// PrintArray2(res);
+System.Console.WriteLine("Введите число: ");
+int num = Convert.ToInt32(System.Console.ReadLine());
+System.Console.WriteLine("Введите основание >= 2, но <= 9: ");
+int arg = Convert.ToInt32(System.Console.ReadLine());
+if (arg < 2 || arg > 9) System.Console.WriteLine("Вы ввели неверное основание");
+else
+{
+    int[] res = FromDecToAnother(num, arg);
+    System.Console.Write($"{num}, {arg} -> ");
+    PrintArray2(res);
+}

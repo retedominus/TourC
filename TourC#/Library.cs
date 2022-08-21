@@ -161,5 +161,53 @@ public static class Library
         return result;
     }
 
+    //Метод перевода чисел из десятичного представления в любой
+    public static int[] FromDecToAnother(int number, int arg)
+    {
+        int[] res = new int[32];
+        for (int i = res.Length - 1; i >= 0; i--)
+        {
+            res[i] = number - (number / arg) * arg;
+            number = number / arg;
+        }
+        int index = 0;
+        for (int i = 0; index == 0; i++)
+        {
+            if (res[i] > 0) index = i;
+        }
+        int newsize = res.Length - index;
+        for (int i = 0; index < res.Length; i++)
+        {
+            res[i] = res[index];
+            index++;
+        }
+        Array.Resize(ref res, newsize);
+        return res;
+    }
+
+    //Метод перевод бинарного в десятичное
+    public static double BinToDecimal(int[] array)
+    {
+        double number = 0;
+        int temp = array.Length - 1;
+        for (int i = 0; i < array.Length; i++)
+        {
+            number = number + array[i] * Math.Pow(2, temp);
+            temp--;
+        }
+        return number;
+    }
+
+    //Метод заполнения рандомного массива 
+    public static int[] FillArrayRandom(int size)
+    {
+        int[] array = new int[size];
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = new Random().Next(0, 2);
+        }
+        return array;
+    }
+
 
 }

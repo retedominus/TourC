@@ -100,13 +100,14 @@ public static class Library
         Console.WriteLine();
     }
     //Метод печати многомерной матрицы
-    public static void PrintSqrArray(int[,] array)
+    public static void PrintMatrix(double[,] matrix)
     {
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
-                System.Console.Write($"{matrix[i]} ");
+                System.Console.Write($"{matrix[i, j]} ");
+                if (j == (matrix.GetLength(1) - 1)) System.Console.WriteLine();
             }
         }
         Console.WriteLine();

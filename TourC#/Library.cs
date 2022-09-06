@@ -91,7 +91,7 @@ public static class Library
     }
 
     //Метод вывода в терминал массива
-    public static void PrintArray(int[] array)
+    public static void PrintArray(double[] array)
     {
         for (int i = 0; i < array.Length; i++)
         {
@@ -99,14 +99,29 @@ public static class Library
         }
         Console.WriteLine();
     }
+
+
     //Метод печати многомерной матрицы
-    public static void PrintSqrArray(int[,] array)
+    public static void PrintDoubleMatrix(double[,] matrix)
     {
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
-                System.Console.Write($"{matrix[i]} ");
+                System.Console.Write($"{matrix[i, j]} ");
+                if (j == (matrix.GetLength(1) - 1)) System.Console.WriteLine();
+            }
+        }
+        Console.WriteLine();
+    }
+    public static void PrintMatrix(int[,] matrix)
+    {
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                System.Console.Write($"{matrix[i, j]} ");
+                if (j == (matrix.GetLength(1) - 1)) System.Console.WriteLine();
             }
         }
         Console.WriteLine();
@@ -219,6 +234,81 @@ public static class Library
             array[i] = new Random().Next(0, 2);
         }
         return array;
+    }
+
+    //Метод заполнения двумерной матрицы случайными вещественными числами
+    public static double[,] CreateMatrixRealNum(int m, int n)
+    {
+        double[,] matrix = new double[m, n];
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                matrix[i, j] = Math.Round(new Random().Next(-10, 10) + new Random().NextDouble(), 2);
+            }
+        }
+        return matrix;
+
+    }
+    //Метод заполнения двумерной матрицы случайными целыми числами
+    public static int[,] CreateIntMatrix(int m, int n)
+    {
+        int[,] matrix = new int[m, n];
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                matrix[i, j] = new Random().Next(1, 10);
+            }
+        }
+        return matrix;
+
+    }
+
+    //Метод определения среднего арифметического по столбцам матрицы
+    public static double[] ArithmeticAvg(int[,] matrix)
+    {
+        double[] array = new double[matrix.GetLength(1)];
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                array[j] += matrix[i, j];
+            }
+            array[j] = Math.Round(array[j] / matrix.GetLength(0), 2);
+        }
+        return array;
+    }
+
+    //Рекурсивная сортировка значений строк матрицы 
+    public static void MatrixLineSortRec(int[,] matrix, int count = 0)
+    {
+        if (count < matrix.GetLength(0))
+            for (int i = 0; i < matrix.GetLength(1); i++)
+            {
+                int maxPos = i;
+                for (int j = i + 1; j < matrix.GetLength(1); j++)
+                {
+                    if (matrix[count, j] > matrix[count, maxPos]) maxPos = j;
+                    int temp = matrix[count, i];
+                    matrix[count, i] = matrix[count, maxPos];
+                    matrix[count, maxPos] = temp;
+                    MatrixLineSortRec(matrix, count + 1);//Почему тут не работает ++?
+                }
+            }
+    }
+    // Метод перемжножение прямоугольных матриц
+    public static int[,] MatrixMult(int[,] mtx1, int[,] mtx2)
+    {
+        int[,] resMtx = new int[mtx1.GetLength(0), mtx1.GetLength(1)];
+        for (int i = 0; i < mtx1.GetLength(0); i++)
+        {
+            for (int j = 0; j < mtx1.GetLength(1); j++)
+            {
+                resMtx[i, j] = mtx1[i, 0] * mtx2[0, j] + mtx1[i, 1] * mtx2[1, j];
+            }
+        }
+        return resMtx;
     }
 
 

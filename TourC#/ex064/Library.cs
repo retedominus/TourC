@@ -91,7 +91,7 @@ public static class Library
     }
 
     //Метод вывода в терминал массива
-    public static void PrintArray(double[] array)
+    public static void PrintArray(int[] array)
     {
         for (int i = 0; i < array.Length; i++)
         {
@@ -297,5 +297,19 @@ public static class Library
                 }
             }
     }
+    // Метод перемжножение прямоугольных матриц
+    public static int[,] MatrixMult(int[,] mtx1, int[,] mtx2)
+    {
+        int[,] resMtx = new int[mtx1.GetLength(0), mtx1.GetLength(1)];
+        for (int i = 0; i < mtx1.GetLength(0); i++)
+        {
+            for (int j = 0; j < mtx1.GetLength(1); j++)
+            {
+                resMtx[i, j] = mtx1[i, 0] * mtx2[0, j] + mtx1[i, 1] * mtx2[1, j];
+            }
+        }
+        return resMtx;
+    }
+
 
 }

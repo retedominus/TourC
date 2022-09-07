@@ -127,6 +127,17 @@ public static class Library
         Console.WriteLine();
     }
 
+    //Метод сложения элементов массива
+    public static int SumArrayContents(int[] array)
+    {
+        int sum = 0;
+        for (int i = 0; i < array.Length; i++)
+        {
+            sum += array[i];
+        }
+        return sum;
+    }
+
     //Метод сложения матриц
     public static int[] SumMatrix(int[] m1, int[] m2)
     {

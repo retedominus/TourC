@@ -1,48 +1,26 @@
 ﻿// Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
 //Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
-
-int UnrepVal(int[,,] matrix, int minVal, int maxVal, int i, int j, int k)
-{
-    int count = 1;
-    int number = new Random().Next(minVal, maxVal);
-    for (i = matrix.GetLength(0) - 1; i >= 0; i--)
-    {
-        for (j = matrix.GetLength(1) - 1; j >= 0; j--)
-        {
-            for (k = matrix.GetLength(2) - 1; k >= 0; k--)
-            {
-                if (number == matrix[i, j, k]) 
-                {
-                    UnrepVal(matrix,minVal, maxVal, i, j, k);
-                    count++;
-                }
-            }
-        }
-    }
-    System.Console.WriteLine(count);
-    return number;
-
-}
 int[,,] Create3DMatrix(int x, int y, int z)
 {
-    int[,,] matrix = new int[i, j, k];
+    int arg1 = 20;
+    int[,,] matrix = new int[x, y, z];
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
             for (int k = 0; k < matrix.GetLength(2); k++)
             {
-                int number = UnrepVal(matrix, 10, 100, x, y, z);
-                matrix[i, j, k] = number;
+                matrix[i, j, k] = new Random().Next(arg1, arg1 + 3) * new Random().Next(1, 3);
+                arg1 += 3;
             }
         }
     }
     return matrix;
 }
 
-void LinePrint(int[,,] matrix)
+void LinePrint(int[,,] matrix, int i = 0)
 {
-    for (int i = 0; i < matrix.GetLength(0); i++)
+    if (i < matrix.GetLength(0))
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
@@ -51,10 +29,9 @@ void LinePrint(int[,,] matrix)
                 System.Console.WriteLine($"{matrix[i, j, k]}({i},{j},{k})");
             }
         }
+        LinePrint(matrix, i + 1);
     }
 }
 
-int minVal = 10;
-int maxVal = 100;
-LinePrint(Create3DMatrix(4, 4, 4));
+LinePrint(Create3DMatrix(2, 2, 2));
 

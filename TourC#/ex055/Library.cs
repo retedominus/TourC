@@ -108,7 +108,7 @@ public static class Library
         Console.WriteLine();
     }
 
-    //Метод печати многомерной матрицы
+    //Метод печати прямоугольной матрицы
     public static void PrintDoubleMatrix(double[,] matrix)
     {
         for (int i = 0; i < matrix.GetLength(0); i++)

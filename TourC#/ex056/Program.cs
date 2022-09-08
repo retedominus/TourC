@@ -32,6 +32,6 @@ int LineMinValue(int[] array)
 
 int[,] matrix = CreateIntMatrix(4, 4);
 PrintMatrix(matrix);
-System.Console.WriteLine($"Наименьшая сумма элементов в {LineMinValue(LineValueSum(matrix))} строке");
+System.Console.WriteLine($"Наименьшая сумма элементов в строке {LineMinValue(LineValueSum(matrix))}");
 
 

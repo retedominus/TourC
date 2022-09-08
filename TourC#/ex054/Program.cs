@@ -2,27 +2,26 @@
 //которая упорядочит по убыванию элементы каждой строки двумерного массива.
 using static Library;
 
-void MatrixLineSortRec(int[,] matrix, int count = 0)
+void MatrixLineSortRec(int[,] matrix, int row = 0)
 {
-    if (count < matrix.GetLength(0))//1- count = 0
+    int temp = 0;
+    if (row < matrix.GetLength(0))
     {
-        for (int i = 0; i < matrix.GetLength(1) - 1; i++)// i = 0
+        for (int i = 0; i < matrix.GetLength(1); i++)
         {
-            int maxPos = i;// maxPos = 0
-            for (int j = i + 1; i < 0; i--)// j = 2
+            for (int j = matrix.GetLength(1) - 1; j > i; j--)
             {
-                if (matrix[count, j] > matrix[count, i])
+                if (matrix[row, j] > matrix[row, j - 1])
                 {
-                    maxPos = j;//[0,2] > [0,1] = maxPos = 1
-                    int temp = matrix[count, i];//temp = 7
-                    matrix[count, i] = matrix[count, maxPos];//[0,0] 3
-                    matrix[count, maxPos] = temp;//[0,1]7
-                    MatrixLineSortRec(matrix, count + 1);//Почему тут не работает ++?
+                    temp = matrix[row, j];
+                    matrix[row, j] = matrix[row, j - 1];
+                    matrix[row, j - 1] = temp;
                 }
             }
         }
+        MatrixLineSortRec(matrix, row + 1);
     }
-
+    
 }
 
 

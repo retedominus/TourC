@@ -138,6 +138,16 @@ public static class Library
         return sum;
     }
 
+    //Метод тот-же но с рекурсией
+    public static int SumArrayContents(int[] array, int sum = 0, int i = 0)
+    {
+        if (i < array.Length)
+        {
+            sum = SumArrayContents(array, sum, i + 1) + array[i];
+        }
+        return sum;
+    }
+
     //Метод сложения матриц
     public static int[] SumMatrix(int[] m1, int[] m2)
     {

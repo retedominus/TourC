@@ -91,7 +91,7 @@ public static class Library
     }
 
     //Метод вывода в терминал массива
-    public static void PrintArray(double[] array)
+    public static void PrintArray(int[] array)
     {
         for (int i = 0; i < array.Length; i++)
         {
@@ -137,7 +137,7 @@ public static class Library
         }
         return sum;
     }
-    
+
     //Метод сложения элекментов массива
     public static int SumArrayContents(int[] array)
     {
@@ -145,6 +145,16 @@ public static class Library
         for (int i = 0; i < array.Length; i++)
         {
             sum += array[i];
+        }
+        return sum;
+    }
+
+    //Метод тот-же но с рекурсией
+    public static int SumArrayContents(int[] array, int sum = 0, int i = 0)
+    {
+        if (i < array.Length)
+        {
+            sum = SumArrayContents(array, sum, i + 1) + array[i];
         }
         return sum;
     }

@@ -13,7 +13,16 @@ int[] CreateArray(int arg1, int arg2)
     return array;
 }
 
+int SumArrayContents(int[] array, int sum = 0, int i = 0)
+{
+    if (i < array.Length)
+    {
+        sum = SumArrayContents(array, sum, i + 1) + array[i];
+    }
+    return sum;
+}
+
 int M = 4;
 int N = 8;
-int sum = SumArrayContents(CreateArray(M, N));
-System.Console.WriteLine($"M = {M}; N = {N}.-> {sum}");
+int elemSum = SumArrayContents(CreateArray(M, N));
+System.Console.WriteLine($"M = {M}; N = {N}.-> {elemSum}");

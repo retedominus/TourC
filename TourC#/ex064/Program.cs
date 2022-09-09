@@ -1,6 +1,5 @@
 ﻿// Задайте значения M и N. 
 //Напишите программу, которая выведет все натуральные числа в промежутке от M до N.
-using static Library;
 int[] CreateArray(int arg1, int arg2)
 {
     int size = (arg2 - arg1) + 1;
@@ -11,6 +10,15 @@ int[] CreateArray(int arg1, int arg2)
         arg1 = arg1 + 1;
     }
     return array;
+}
+void PrintArray(int[] array, int count = 0)//В методе испльзовал рекурсию, но она не обязательна
+{
+    if (count < array.Length)
+    {
+        System.Console.Write($"{array[count]} ");
+        PrintArray(array, count + 1);
+    }
+    else Console.WriteLine();
 }
 
 int M = 1;
